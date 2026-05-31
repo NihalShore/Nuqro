@@ -6,7 +6,7 @@ NUQRO runs entirely in your terminal – no login, no graphics, no internet afte
 
 Features
 
-- Four tests – Intelligence (IQ), Emotional Intelligence (EQ),Social Intelligence (SQ), Adversity Quotient (AQ)
+- Four tests – Intelligence (IQ), Emotional Intelligence (EQ), Social Intelligence (SQ), Adversity Quotient (AQ)
 - Age-normalised scoring – Z-score method with norm tables
 - Sub-score breakdowns – See your EQ dimensions, SQ factors, and AQ CORE scores
 - Resume any test – Stop halfway and pick up where you left off
@@ -67,16 +67,28 @@ python main.py --export
 Project structure
 
 nuqro/
-├── main.py                 # Entry point, menu, resume logic
-├── questions.py            # All IQ, EQ, SQ, AQ, and lie scale questions
-├── scorer.py               # Raw scores, sub-scores, Z-score normalisation
-├── report.py               # Terminal output, ASCII charts, file exports
-├── utils.py                # Helpers: shuffling, progress bar, timed input
-├── generate_norms.py       # Script to create data/norms.json
-├── data/                   # Auto-created: norms.json, results.json, resume.json
-├── reports/                # User-exported reports (txt, json)
-├── test/                   # Unit and integration tests
-└── docs/                   # Documentation (research notes, references, etc.)
+    main.py                 # Entry point, menu, resume logic
+    questions.py            # All IQ, EQ, SQ, AQ, and lie scale questions
+    scorer.py               # Raw scores, sub-scores, Z-score normalisation
+    report.py               # Terminal output, ASCII charts, file exports
+    utils.py                # Helpers: shuffling, progress bar, timed input
+    generate_norms.py       # Script to create data/norms.json
+    __init__.py             # Package initialiser
+    data/
+        norms.json          # Generated norm tables (mean, sd per age group)
+        results.json        # Auto-created user history (excluded from git)
+        resume.json         # Auto-created resume state (excluded from git)
+    reports/                # User-exported reports (txt, json) – excluded from git
+    test/
+        __init__.py
+        test_questions.py
+        test_scorer.py
+        test_integration.py
+    docs/
+        RESEARCH.md
+        REFERENCES.md
+        norms_construction.md
+        validation_notes.md
 
 How scoring works
 
